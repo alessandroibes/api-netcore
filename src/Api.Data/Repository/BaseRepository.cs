@@ -15,6 +15,7 @@ namespace Api.Data.Repository {
             _context = context;
             _dataset = _context.Set<T> ();
         }
+
         public async Task<bool> DeleteAsync (Guid id) {
             try {
                 var result = await _dataset.SingleOrDefaultAsync (p => p.Id.Equals (id));
@@ -71,10 +72,9 @@ namespace Api.Data.Repository {
         public async Task<T> UpdateAsync (T item) {
             try {
                 var result = await _dataset.SingleOrDefaultAsync (p => p.Id.Equals (item.Id));
-                if (result == null)
-                    return null;
+                if (result == null) return null;
 
-                item.UpdateAt = DateTime.UtcNow;
+                item.UpdateAt = DateTime.Now;
                 item.CreateAt = result.CreateAt;
 
                 _context.Entry (result).CurrentValues.SetValues (item);
