@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.CrossCutting.DependencyInjection;
+﻿using Api.CrossCutting.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Application {
+namespace Application
+{
     public class Startup {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;
@@ -31,7 +25,7 @@ namespace Application {
             services.AddSwaggerGen (c => {
                 c.SwaggerDoc ("v1",
                     new Info {
-                        Title = "Curso de AspNetCore 2.2",
+                        Title = "Curso de AspNetCore 2.2 para teste do Git",
                             Version = "v1",
                             Description = "Exemplo de API REST criada com o ASP.NET Core",
                             Contact = new Contact {
