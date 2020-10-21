@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using Api.Data.Context;
 using Api.Domain.Entities;
@@ -74,7 +75,9 @@ namespace Api.Data.Repository {
                 if (result == null)
                     return null;
 
-                item.UpdateAt = DateTime.UtcNow;
+                DateTime date = DateTime.UtcNow;
+
+                item.UpdateAt = date;
                 item.CreateAt = result.CreateAt;
 
                 _context.Entry (result).CurrentValues.SetValues (item);
